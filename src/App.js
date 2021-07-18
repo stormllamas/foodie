@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, Fragment } from 'react';
 
-function App() {
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+
+import { Provider } from 'react-redux';
+import store from './store';
+
+import {Helmet} from "react-helmet";
+import Navbar from './components/layout/Navbar'
+import Home from './components/Home'
+
+
+import PublicRoute from './components/common/PublicRoute';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Helmet>
+        <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css"/>
+        <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
+      </Helmet>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <PublicRoute exact path="/" component={Home} />
+          </Switch>
+        </Router>
+      </Provider>
+    </Fragment>
   );
 }
 
