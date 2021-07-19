@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { HashLink as Link } from 'react-router-hash-link';
 
 import { connect } from 'react-redux';
 
@@ -35,45 +36,27 @@ const Navbar = ({
     <>
       <CNavbar expand="lg" colorScheme="light" className="bg-light">
         <CContainer fluid>
-          <CNavbarBrand href="#">{siteConfig.siteName}</CNavbarBrand>
+          <Link to="/"><CNavbarBrand className="fw-6"><i className="fas fa-hamburger fs-25 mr-1"></i>{siteConfig.siteName}</CNavbarBrand></Link>
+          
           <CNavbarToggler onClick={() => setVisible(!visible)} />
           <CCollapse className="navbar-collapse" visible={visible}>
             <CNavbarNav>
               <CNavItem>
-                <CNavLink href="#" active>
-                  Home
-                </CNavLink>
+                <CNavLink href="#" active>Home</CNavLink>
               </CNavItem>
               <CNavItem>
-                <CNavLink href="#">Link</CNavLink>
+                <CNavLink href="#">My Profile</CNavLink>
               </CNavItem>
-              <CDropdown variant="nav-item" popper={false}>
-                <CDropdownToggle color="secondary">
-                  Dropdown button
-                </CDropdownToggle>
-                <CDropdownMenu>
-                  <CDropdownItem href="#">Action</CDropdownItem>
-                  <CDropdownItem href="#">Another action</CDropdownItem>
-                  <CDropdownDivider />
-                  <CDropdownItem href="#">Something else here</CDropdownItem>
-                </CDropdownMenu>
-              </CDropdown>
               <CNavItem>
-                <CNavLink href="#" disabled>
-                  Disabled
-                </CNavLink>
+                <CNavLink href="#">Following</CNavLink>
+              </CNavItem>
+              <CNavItem>
+                <CNavLink href="#">Followers</CNavLink>
+              </CNavItem>
+              <CNavItem>
+                <CNavLink href="#">Settings</CNavLink>
               </CNavItem>
             </CNavbarNav>
-            <CForm className="d-flex">
-              <CFormControl
-                type="search"
-                className="me-2"
-                placeholder="Search"
-              />
-              <CButton type="submit" color="success" variant="outline">
-                Search
-              </CButton>
-            </CForm>
           </CCollapse>
         </CContainer>
       </CNavbar>
